@@ -7,76 +7,108 @@ An agent-based Robo Advisor designed to support personal financial decision-maki
 
 ## Project Overview
 
-The project aims to develop an intelligent virtual assistant capable of supporting users throughout the personal financial management cycle: from monitoring income and expenses to identifying savings opportunities and allocating available savings into an efficient investment portfolio.
+### Objective: Integrated Personal Budget and Savings Management
 
-The underlying objective is to connect two traditionally separate activities — **personal budget management and investment planning** — within a single analytical system. Rather than limiting the application to financial monitoring, the project extends its capabilities to support more complex decisions about how savings can be managed and invested.
+The project aims to develop an intelligent virtual assistant for the **integrated management and optimization of personal finances**, supporting the user throughout the entire financial management cycle: from monitoring income and expenses to identifying budget imbalances, improving spending efficiency, assessing savings capacity, and allocating available savings into an efficient investment portfolio.
 
-The architecture is built on **LangGraph**, using a modular decision graph of specialized agents and tools. This approach allows the system to interpret natural-language requests, select the appropriate analytical task, execute financial calculations and generate structured responses. Context memory supports continuity across interactions.
+The central objective is to **optimize both sides of personal financial management**:
 
-### Interaction Flow
+- **Expense management:** identify the spending categories responsible for negative monthly balances, understand their contribution to financial deficits, and highlight opportunities to improve budget efficiency.
+- **Savings and investment management:** assess the financial resources available for saving and investment, monitor the personal financial reserve, and support the allocation of investable savings into a diversified portfolio of financial assets, selected through quantitative risk-return analysis.
 
-The system follows five main steps:
+The project therefore connects **personal budget analysis with investment portfolio optimization**, treating investment decisions as part of a broader financial planning process rather than as an isolated market analysis.
 
-**1. User Input and Financial Data**
+The architecture is based on **LangGraph**, which organizes specialized agents and analytical tools into a modular decision graph. Natural-language processing enables the assistant to interpret user requests, select the appropriate financial analysis, and generate structured responses, while conversational memory supports continuity across interactions.
 
-The assistant receives a dataset containing personal income and expense transactions. Users can submit natural-language questions about their financial position, including monthly balances, deficit categories, average savings and investment opportunities.
+### Interaction Flow and Analytical Methodology
 
-Historical financial market data are retrieved to support the investment analysis.
+**I. Personal Financial Data and User Requests**
 
-**2. Agent Decision and Task Selection**
+The assistant receives a dataset containing personal income and expense transactions.
 
-A decision node interprets the user's request and selects the appropriate task within the LangGraph architecture.
+Users can ask questions such as:
 
-Each task is associated with a specialized analytical component.
+- What are my monthly income, expenses, and financial balances?
+- Which spending categories contribute most to my monthly deficits?
+- Where can I optimize my expenses?
+- How much can I save on average each month?
+- How can I allocate my savings into an efficient investment portfolio?
 
-**3. Personal Finance Analysis**
+The system combines personal financial data with updated financial market data to address both budget management and investment planning.
 
-The system performs three main activities:
+**I.I. Agent Decision and Task Selection**
 
-- **Monthly cash flow analysis:** calculates income, expenses and monthly balances, identifying periods of financial deficit.
-- **Expense analysis:** examines spending categories in months with negative balances, highlighting critical expenses and potential optimization opportunities.
-- **Savings analysis:** estimates average monthly savings based on historical financial transactions.
+A decision node interprets each natural-language request and selects the most appropriate task within the LangGraph architecture.
 
-These analyses establish the financial basis for subsequent investment planning.
+Specialized analytical tools perform the required calculations and return results for the agent to interpret and communicate.
 
-**4. Investment Analysis and Efficient Portfolio Construction**
+**I.II. Personal Budget Monitoring and Expense Optimization**
 
-The investment component extends personal financial management into quantitative portfolio optimization.
+The first analytical component focuses on understanding and improving the user's financial position.
 
-The methodology follows two analytical stages.
+It performs three principal tasks:
 
-**I. Financial Asset Analysis**
+- **Monthly cash flow analysis:** calculates income, expenses, and net monthly balances, identifying periods of surplus and deficit.
+- **Expense analysis in deficit months:** examines the spending categories contributing to negative balances, identifies the most critical expense items, and highlights potential areas for cost optimization.
+- **Savings capacity analysis:** estimates average monthly savings from historical income and expense patterns, providing a quantitative basis for assessing the resources potentially available for investment.
 
-An initial selection of stocks and ETFs is organized across different investment categories, including safe-haven assets, technology, large-cap equities and global market indices.
+These activities establish the connection between **spending optimization, savings generation, and the management of the personal financial reserve**.
 
-Historical price distributions are examined, including excess kurtosis, to assess the characteristics of asset returns and the potential influence of extreme observations.
+The purpose is not simply to report financial transactions, but to identify where financial resources can be managed more efficiently and how the resulting savings can support longer-term investment decisions.
 
-A **bootstrap methodology** is then applied by resampling historical daily returns to simulate potential future asset performance over a one-year horizon.
+**I.III. Savings Allocation and Quantitative Investment Analysis**
 
-This approach incorporates the empirical characteristics of historical returns into the simulation process.
+The second analytical component focuses on the efficient allocation of savings into a portfolio of stocks and ETFs.
 
-**II. Efficient Portfolio Optimization**
+The investment process is developed through two successive analytical stages.
 
-The portfolio construction process follows a mean-variance optimization framework.
+**I.IV. Financial Asset Analysis and Return Simulation**
 
-Expected returns are estimated using historical average returns, while annualized volatility and the covariance matrix are calculated to assess individual asset risk and relationships between assets.
+The analysis begins with a selection of financial assets organized into different investment categories, including safe-haven assets, technology stocks, large-cap equities, and global market indices.
 
-Monte Carlo simulations generate alternative portfolio allocations with different asset weights.
+Historical financial market data are retrieved and analyzed to examine the behavior and distribution of asset returns.
 
-For each simulated portfolio, the system evaluates:
+Particular attention is given to **kurtosis**, which helps identify distributions characterized by extreme observations and tail risk.
 
-- Expected portfolio return.
-- Annualized portfolio volatility.
-- Covariance relationships between assets.
-- Sharpe Ratio as a measure of risk-adjusted performance.
+The **bootstrap technique** is then applied to historical daily returns, generating simulated return scenarios through repeated sampling of the observed return distribution.
 
-The portfolio with the **maximum Sharpe Ratio** is selected as the optimal allocation, identifying the combination of assets and percentage weights offering the most favorable risk-return balance under the model assumptions.
+This methodology is used to estimate potential future asset performance over a one-year horizon while accounting for the empirical characteristics of historical returns.
 
-**5. Structured and Personalized Output**
+The analysis provides an initial assessment of individual asset behavior before portfolio construction.
 
-The agent produces responses aligned with the user's request, combining quantitative results, financial interpretations and targeted suggestions.
+**II. Efficient Portfolio Construction and Monte Carlo Optimization**
 
-The modular architecture also allows additional analytical tools and financial decision scenarios to be integrated progressively.
+The next stage aims to identify an efficient allocation of available savings among the selected financial assets.
+
+The portfolio optimization framework incorporates:
+
+- **Expected returns:** estimated from historical average asset returns.
+- **Annualized volatility:** used to measure the variability and risk of individual asset returns.
+- **Covariance matrix:** used to evaluate relationships between assets and the effects of their combined risk within a portfolio.
+- **Portfolio weights:** representing the percentage allocation of invested capital across the selected assets.
+- **Sharpe Ratio:** used to evaluate portfolio performance relative to the level of risk assumed.
+
+A **Monte Carlo simulation** generates thousands of alternative portfolios with different combinations of asset weights.
+
+For each simulated portfolio, expected return, volatility, and the Sharpe Ratio are calculated.
+
+The allocation that achieves the **maximum Sharpe Ratio** is selected as the optimal portfolio under the model assumptions, identifying the combination of financial assets and percentage weights offering the most favorable risk-adjusted expected performance.
+
+This process connects the management of personal savings with quantitative investment decisions, providing a structured approach to the allocation of investable financial resources.
+
+**II.I. Structured Financial Assessment and Personalized Output**
+
+The agent integrates the results of the relevant analytical tasks and provides responses consistent with the user's request.
+
+Outputs may include:
+
+- Monthly budget summaries and cash flow assessments.
+- Identification of deficit periods and critical expense categories.
+- Savings capacity estimates and opportunities for spending optimization.
+- Quantitative analysis of financial assets and simulated returns.
+- Portfolio allocations, expected performance, volatility, and risk-adjusted evaluation.
+
+The resulting system supports a progression from **financial monitoring to expense optimization, savings assessment, and investment portfolio construction**.
 
 ### Methodological Note on Expected Returns
 
@@ -87,11 +119,13 @@ Two distinct approaches are used for different analytical purposes:
 
 ### Conclusions
 
-The project demonstrates how agent-based AI can support personal financial management across different levels of analytical complexity.
+The project demonstrates how **agent-based AI can support the integrated management of personal finances**, combining the optimization of expenditure with the efficient allocation of savings.
 
-It combines relatively straightforward tasks, such as monitoring monthly cash flows and identifying savings opportunities, with more advanced quantitative activities involving financial market analysis, return simulations and portfolio optimization.
+Its distinctive feature is the connection between two complementary financial decisions: **how to improve the personal budget and how to invest the financial resources available after assessing income, expenses, savings capacity, and financial reserves**.
 
-The resulting Robo Advisor provides a modular framework for connecting personal financial monitoring with structured, data-driven investment decision support.
+The assistant supports both straightforward financial monitoring activities and more complex quantitative investment analyses, incorporating historical return distributions, kurtosis, bootstrap simulations, covariance analysis, Monte Carlo portfolio optimization, and Sharpe Ratio maximization.
+
+The resulting Robo Advisor provides a modular, data-driven framework for personal financial decision support, linking everyday budget management with structured investment planning.
 
 ## Personal Finance Management
 
@@ -122,5 +156,7 @@ Python · Google Colab · LangGraph · LangChain · Pandas · NumPy · yfinance 
 The system integrates personal budget analysis with market-based portfolio optimization through a modular agentic architecture, supporting progressive financial analysis and investment decision-making.
 
 ## Project Scope
+
+Independent prototype developed for the application of agentic AI and quantitative methods to personal finance and portfolio management.
 
 Independent prototype developed for the application of agentic AI and quantitative methods to personal finance and portfolio management.
